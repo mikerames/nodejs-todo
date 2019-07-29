@@ -1,5 +1,5 @@
 module.exports = {
-	herokuUrl : 'mongodb://tst:Aireverse2@ds011873.mlab.com:11873/heroku_fqk7wsks',
+	herokuUrl : 'mongodb://heroku_mk7qw61c:Aireverse2@ds261040.mlab.com:61040/heroku_mk7qw61c',
     remoteUrl : 'mongodb://node:nodeuser@mongo.onmodulus.net:27017/uwO3mypu',
     localUrl: 'mongodb://localhost/meanstacktutorials'
 };
