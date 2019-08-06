@@ -1,4 +1,5 @@
 var Todo = require('./models/todo');
+var nodemailer = require('nodemailer');
 
 function getTodos(res) {
     Todo.find(function (err, todos) {
@@ -37,6 +38,40 @@ module.exports = function (app) {
         });
 
     });
+    
+    
+    
+
+        // create todo and send back all todos after creation
+    app.post('/api/mail', function (req, res) {
+    
+	var transporter = nodemailer.createTransport({
+	  service: 'gmail',
+	  auth: {
+		user: 'youremail@gmail.com',
+		pass: 'yourpassword'
+	  }
+	});
+
+	var mailOptions = {
+	  from: 'youremail@gmail.com',
+	  to: 'myfriend@yahoo.com',
+	  subject: 'Sending Email using Node.js',
+	  text: 'That was easy!'
+	};
+
+	transporter.sendMail(mailOptions, function(error, info){
+	  if (error) {
+		console.log(error);
+	  } else {
+		console.log('Email sent: ' + info.response);
+	  }
+	});
+
+	});
+    
+    
+    
 
     // delete a todo
     app.delete('/api/todos/:todo_id', function (req, res) {
