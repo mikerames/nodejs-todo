@@ -1,6 +1,5 @@
 // set up ======================================================================
 var express = require('express');
-const request = require('request');
 var app = express(); 						// create our app w/ express
 var mongoose = require('mongoose'); 				// mongoose for mongodb
 var port = process.env.PORT || 8081; 				// set the port
