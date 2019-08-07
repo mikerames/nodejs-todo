@@ -1,4 +1,5 @@
 var Todo = require('./models/todo');
+var Athlete = require('./models/athlete');
 
 function getTodos(res) {
     Todo.find(function (err, todos) {
@@ -12,6 +13,15 @@ function getTodos(res) {
     });
 };
 
+function getAthletes(res) {
+    Athlete.find(function (err, athletes) {
+        if (err) {
+            res.send(err);
+        }
+        res.json(athletes);
+    });
+};
+
 module.exports = function (app) {
 
     // api ---------------------------------------------------------------------
@@ -19,6 +29,12 @@ module.exports = function (app) {
     app.get('/api/todos', function (req, res) {
         // use mongoose to get all todos in the database
         getTodos(res);
+    });
+
+    // get all athletes
+    app.get('/api/athletes', function (req, res) {
+        // use mongoose to get all todos in the database
+        getAthletes(res);
     });
 
     // create todo and send back all todos after creation
