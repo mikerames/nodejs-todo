@@ -1,5 +1,5 @@
-var Todo = require('../models/todo');
-var Athlete = require('../models/athlete');
+var Todo = require('./models/todo');
+var Athlete = require('./models/athlete');
 
 function getTodos(res) {
     Todo.find(function (err, todos) {
