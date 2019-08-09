@@ -1,5 +1,5 @@
-var Todo = require('./models/todo');
-var Athlete = require('./models/athlete');
+var Todo = require('../../models/todo');
+var Athlete = require('../../models/athlete');
 
 function getTodos(res) {
     Todo.find(function (err, todos) {
@@ -42,7 +42,11 @@ module.exports = function (app) {
 
         // create a todo, information comes from AJAX request from Angular
         Todo.create({
-            text: req.body.text,
+            name: req.body.name,
+            description: req.body.description,
+            imgUrl: req.body.imgUrl,
+            alt: req.body.alt,
+            category: req.body.category,
             done: false
         }, function (err, todo) {
             if (err)
@@ -66,6 +70,8 @@ module.exports = function (app) {
         });
     });
 
+
+ 
     // application -------------------------------------------------------------
     app.get('*', function (req, res) {
         res.sendFile(__dirname + '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
