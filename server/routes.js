@@ -40,8 +40,10 @@ module.exports = function (app) {
     app.get('/api/todos/:todo_id', function (req, res, next) {
     let todoId = req.params.todo_id;
 
+        console.log(todoId);
+        
     return Todo
-    .findById(todoId)
+    .findById(ObjectId(todoId))
     .then(function (todo) {
         res.locals.data = todo;
         res.locals.status = httpStatuses.OK;
