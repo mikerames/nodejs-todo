@@ -37,27 +37,6 @@ module.exports = function (app) {
         getAthletes(res);
     });
 
-    app.get('/api/todos/:todo_id', function (req, res, next) {
-    let todoId = req.params.todo_id;
-
-        console.log("Teste");
-        console.log(todoId);
-        
-    return Todo
-    .findById(ObjectId(todoId))
-    .then(function (todo) {
-        res.locals.data = todo;
-        res.locals.status = httpStatuses.OK;
-        return next();
-    }, function (err) {
-        return;
-    });
-});
-    
-    
-    
-    
-    
     // create todo and send back all todos after creation
     app.post('/api/todos', function (req, res) {
 
